@@ -1,9 +1,15 @@
-<html>
-    <head>
-        <title>Ola's blog</title>
-    </head>
-    <body>
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </body>
-</html>
+{% extends "assignment_scheduler/base.html" %}
+
+  {% block content %}
+    {% for assignment in assignments %}
+
+      <div class="assignment">
+        <div class="duedate">
+          {{ assignment.due_date }}
+        </div>
+        <h1><a href="">{{ assignment.name }}</a></h1>
+        <p>{{ assignment.description|linebreaksbr }}</p>
+      </div>
+      {% endfor %}
+
+  {% endblock %}

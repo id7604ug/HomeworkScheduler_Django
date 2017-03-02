@@ -8,7 +8,7 @@ class ScheduleItem(models.Model):
     name = models.CharField(max_length=100)
     complete = models.BooleanField()
     description = models.TextField()
-    due_date = models.DateTimeField(blank=True, null=True)
+    due_date = models.DateField(blank=True, null=True)
 
     def __repr__(self):
-        return "ID: {}; Name: {}; IsComplete: {}; Description: {}; DueDate: {}".format(self.id, self.name, self.complete, self.description, self.date_due)
+        return "ID: {}; Name: {}; IsComplete: {}; Description: {}; DueDate: {}".format(self.id, self.name, self.complete, self.description, self.due_date)
