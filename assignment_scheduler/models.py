@@ -10,5 +10,6 @@ class ScheduleItem(models.Model):
     description = models.TextField()
     due_date = models.DateTimeField(blank=True, null=True)
 
+
     def __repr__(self):
         return "ID: {}; Name: {}; IsComplete: {}; Description: {}; DueDate: {}".format(self.id, self.name, self.complete, self.description, self.due_date)

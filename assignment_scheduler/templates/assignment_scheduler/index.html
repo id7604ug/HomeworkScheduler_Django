@@ -7,8 +7,12 @@
     <h2>Your Past Due Assignments:</h2>
     {% if past_due|length > 0 %}
       {% for assignment in past_due %}
-      <p class="alert alert-danger">Class: {{ assignment.class_name }} Assignment: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% if not assignment.complete %}
+          <p class="alert alert-danger">Class: {{ assignment.class_name }} Assignment: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% endif %}
       {% endfor %}
+    {% else %}
+      <p class="alert alert-success">No Overdue Assignments</p>
     {% endif %}
   </div>
 
@@ -17,15 +21,21 @@
     <h4>Due Today:</h4>
     {% if due_today|length > 0 %}
       {% for assignment in due_today %}
-        <p class="alert alert-warning">Class: {{ assignment.class_name }} Assignment: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% if not assignment.complete %}
+          <p class="alert alert-warning">Class: {{ assignment.class_name }} Assignment: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+          {% else %}
+          <p class="alert alert-success">Class: {{ assignment.class_name }} Assignment: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% endif %}
       {% endfor %}
-    {% else %}
-      <p>None</p>
     {% endif %}
     <h4>Due Tomorrow:</h4>
     {% if due_tomorrow|length > 0 %}
       {% for assignment in due_tomorrow %}
-        <p class="alert alert-info">Class: {{ assignment.class_name }} Assignemnt: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% if not assignment.complete %}
+          <p class="alert alert-warning">Class: {{ assignment.class_name }} Assignemnt: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% else %}
+          <p class="alert alert-success">Class: {{ assignment.class_name }} Assignemnt: <a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></p>
+        {% endif %}
       {% endfor %}
     {% else %}
       <p>None</p>

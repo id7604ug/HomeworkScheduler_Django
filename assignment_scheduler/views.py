@@ -32,8 +32,15 @@ def assignment_read(request, id):
     return render(request, 'assignment_scheduler/read_one_assignment.html', {'assignment':assignment})
 
 def assignment_delete(request, id):
-    assignments = ScheduleItem.objects.get(id=id).delete()
-    return redirect('/assignment_list/', {'assignments': assignments})
+    ScheduleItem.objects.get(id=id).delete()
+    assignments = ScheduleItem.objects.all()
+    return redirect('/assignment_list/', {'assignments':assignments})
 
 def check_due_assignments(request):
     return render(request, 'assignment_scheduler/check_due_assignments.html', {})
+
+def assignment_complete(request, id):
+    ScheduleItem.objects.get(id=id).complete = True
+
+    assignments = ScheduleItem.objects.all()
+    return redirect('/assignment_list/', {'assignments':assignments})

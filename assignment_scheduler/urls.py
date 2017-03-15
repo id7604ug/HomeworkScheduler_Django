@@ -9,6 +9,7 @@ urlpatterns = [
     # url(r'^delete_assignment/$', views.delete_assignment, name='delete_assignment'),
     url(r'^assignment/(?P<id>\d+)/$', views.assignment_read, name='assignment_read'),
     url(r'^delete_assignment/(?P<id>\d+)/$', views.assignment_delete, name='assignment_delete'),
-    url(r'^check_due_assignments/$', views.check_due_assignments, name='check_due_assignments')
+    url(r'^check_due_assignments/$', views.check_due_assignments, name='check_due_assignments'),
+    url(r'^assignment/complete/(?P<id>\d+)/$', views.assignment_complete, name='assignment_complete'),
 
 ]

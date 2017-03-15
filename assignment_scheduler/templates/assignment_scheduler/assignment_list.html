@@ -3,15 +3,36 @@
   {% block content %}
     {% for assignment in assignments %}
 
-      <div class="assignment">
-        <h1><a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></h1>
-        <p>{{ assignment.description|linebreaksbr }}</p>
-        <div class="duedate">
-          <p>Due Date: {{ assignment.due_date }}</p>
-        </div>
-        <button type="submit"><a href="/delete_assignment/{{ assignment.id }}/">Delete</a></button>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3><a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></h3>
       </div>
 
-      {% endfor %}
+      <div class="panel-body">
+        <h5>Description:</h5>
+        <p>{{ assignment.description|linebreaksbr }}</p>
+        {% if assignment.complete %}
+          <p class="alert alert-success">This assignment is complete</p>
+        {% else %}
+          <p class="alert alert-warning">This assignment is not complete</p>
+        {% endif %}
+      </div>
+
+      <div class="panel-footer">
+        <p>Due Date: {{ assignment.due_date }}</p>
+        <button type="button" class="btn-group">
+          <a href="/assignment/complete/{{ assignment.id }}">Complete</a>
+        </button>
+        <div class="btn-group">
+          <button type="button">
+            Delete
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    {% endfor %}
 
   {% endblock %}
