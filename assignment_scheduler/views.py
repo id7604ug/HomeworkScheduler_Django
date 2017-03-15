@@ -40,7 +40,9 @@ def check_due_assignments(request):
     return render(request, 'assignment_scheduler/check_due_assignments.html', {})
 
 def assignment_complete(request, id):
-    ScheduleItem.objects.get(id=id).complete = True
+    assignment = ScheduleItem.objects.get(id=id)
+    assignment.complete = True
+    assignment.save()
 
     assignments = ScheduleItem.objects.all()
     return redirect('/assignment_list/', {'assignments':assignments})

@@ -5,10 +5,12 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3><a href="/assignment/{{ assignment.id }}/">{{ assignment.name }}</a></h3>
+        <h3><a href="/assignment/{{ assignment.id }}/">Assignment: {{ assignment.name }}</a></h3>
       </div>
 
       <div class="panel-body">
+        <h5>Class:</h5>
+        {{ assignment.class_name }}
         <h5>Description:</h5>
         <p>{{ assignment.description|linebreaksbr }}</p>
         {% if assignment.complete %}
@@ -21,7 +23,7 @@
       <div class="panel-footer">
         <p>Due Date: {{ assignment.due_date }}</p>
         <button type="button" class="btn-group">
-          <a href="/assignment/complete/{{ assignment.id }}">Complete</a>
+          <a href="/assignment/complete/{{ assignment.id }}/">Complete</a>
         </button>
         <div class="btn-group">
           <button type="button">
