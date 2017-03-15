@@ -1,11 +1,12 @@
-  {% extends "assignment_scheduler/base.html" %}
+{% extends "assignment_scheduler/base.html" %}
 
-  {% block content %}
-
+{% block content %}
+    <script>$(function(){$('#id_due_date').datepicker()})
+  </script>
     <h1>New Assignment</h1>
     <form method="POST" class="post-form">{% csrf_token %}
       {{ form.as_p }}
       <button type="submit" class="save btn-default">Save</button>
     </form>
 
-  {% endblock %}
+{% endblock %}
